@@ -308,6 +308,7 @@ def proceed_after_fight(character, monster):
       c = input('What do you want to do? (A)ttack or (F)lee? ').strip().upper()
     if c[0] == 'F':
       print('You cowardly run back to the snowy plains.')
+      print()
       return False
 
     hit = generate_hit_roll()
