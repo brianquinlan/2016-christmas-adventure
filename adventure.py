@@ -122,6 +122,33 @@ WEST_ALREADY_COMPLETED = """You wander around the swamp until the smell overweal
 You return to the snowy clearing.
 """
 
+DOWN_COMMON = """You descend into the dark cave.
+
+There is no light at all but the faint glow of your enchanted armor. You
+cautiously proceed, the cold air chilling you to the bone.
+
+Ahead, you see a massive clearing. As it opens up, you see that it is so large
+that it contains a huge tower. Guarding the tower is a nearly infinite number
+of soliders.
+"""
+
+DOWN_VISIBLE = DOWN_COMMON + """You carefully sneak towards the tower, trying to avoid
+the attention of the guards.
+"""
+
+DOWN_INVISIBLE = DOWN_COMMON + """You drink your potion of invisibility and race towards
+the tower. You make it inside just as it wares off!
+
+You climb the circular stairs until the top of the tower. At the top of the
+tower you see a medium-sized man sitting in a throne. It is the Bad King!
+
+"Welcome to my tower, {name}." says the Bad King, "I hope that you are
+ready to die."
+
+With those words, he picks up his staff and charges towards you.
+"""
+
+
 EAST_AREA = 'east'
 SOUTH_AREA = 'south'
 WEST_AREA = 'west'
@@ -397,33 +424,6 @@ def go_west(character):
   character.armor = 'Enchanted ' + character.armor
   character.weapon = 'Enchanted ' + character.weapon
   character.completed_areas.add(WEST_AREA)
-
-
-DOWN_COMMON = """You descend into the dark cave.
-
-There is no light at all but the faint glow of your enchanted armor. You
-cautiously proceed, the cold air chilling you to the bone.
-
-Ahead, you see a massive clearing. As it opens up, you see that it is so large
-that it contains a huge tower. Guarding the tower is a nearly infinite number
-of soliders.
-"""
-
-DOWN_VISIBLE = DOWN_COMMON + """You carefully sneak towards the tower, trying to avoid
-the attention of the guards.
-"""
-
-DOWN_INVISIBLE = DOWN_COMMON + """You drink your potion of invisibility and race towards
-the tower. You make it inside just as it wares off!
-
-You climb the circular stairs until the top of the tower. At the top of the
-tower you see a medium-sized man sitting in a throne. It is the Bad King!
-
-"Welcome to my tower, {name}." says the Bad King, "I hope that you are
-ready to die."
-
-With those words, he picks up his staff and charges towards you.
-"""
 
 
 def go_down(character):
