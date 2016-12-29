@@ -547,7 +547,7 @@ def select_path(character):
     c = ''
     while not c or c[0] not in 'NESWDP':
       c = input('Do you go (N)orth (E)ast (S)outh (W)est or (D)own '
-                'P)rint Character? ').upper().strip()
+                '(P)rint Character? ').upper().strip()
     if c[0] == 'N':
       go_north(character)
     elif c[0] == 'E':
