@@ -518,9 +518,12 @@ def select_path(character):
 
 
 def main():
-  character = select_character()
-  print(WELCOME_TEXT.format(name=character.name))
-  select_path(character)
+  try:
+    character = select_character()
+    print(WELCOME_TEXT.format(name=character.name))
+    select_path(character)
+  except CharacterDeadException:
+    print("You died. Try again and maybe you'll get lucky.")
 
 
 if __name__ == '__main__':
