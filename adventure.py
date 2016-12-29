@@ -179,18 +179,21 @@ ready to die."
 With those words, he picks up his staff and charges towards you.
 """
 
-
 EAST_AREA = 'east'
 SOUTH_AREA = 'south'
 WEST_AREA = 'west'
 CAVE_AREA = 'cave'
 
 non_clearing_input = input
+
+
 def my_input(*args, **kwargs):
   import subprocess
   x = non_clearing_input(*args, **kwargs)
   subprocess.call('clear', shell=True)
   return x
+
+
 input = my_input
 
 
@@ -312,21 +315,18 @@ def proceed_after_fight(character, monster):
       damage = character.get_damage()
       monster.hitpoints -= damage
       if monster.hitpoints > 0:
-        print(
-            'You swing your {} at the {} and hit it for {} damage. It has {} '
-            'hitpoints remaining.'.
-            format(character.weapon, monster.name, damage, monster.hitpoints))
+        print('You swing your {} at the {} and hit it for {} damage. It has {} '
+              'hitpoints remaining.'.format(character.weapon, monster.name,
+                                            damage, monster.hitpoints))
       else:
-        print(
-            "You swing your mighty {} at the {}. It's body will lay as an "
-            "example to others who dare to confront you.".
-            format(character.weapon, monster.name))
+        print("You swing your mighty {} at the {}. It's body will lay as an "
+              'example to others who dare to confront you.'.format(
+                  character.weapon, monster.name))
         return True
     else:
-      print(
-          "You swing your mighty {} at the {} but hit nothing but air! Maybe "
-          "you aren't cut out for adventuring..."
-          .format(character.weapon, monster.name))
+      print('You swing your mighty {} at the {} but hit nothing but air! Maybe '
+            "you aren't cut out for adventuring..."
+            .format(character.weapon, monster.name))
 
 
 def proceed_after_random_fight(character):
@@ -369,10 +369,8 @@ def go_east(character):
   print(EAST_TEXT)
   for i in range(0, 150, 25):
     if random.randint(0, i) > character.dexterity:
-      print(
-          'A block of pyroclastic debris flys towards you. You attempt to '
-          'dodge but are\ntoo slow.'
-      )
+      print('A block of pyroclastic debris flys towards you. You attempt to '
+            'dodge but are\ntoo slow.')
       print()
       if 'Enchanted' in character.armor:
         print('The debris hits your {} and bounces off harmlessly.'.format(
@@ -385,10 +383,8 @@ def go_east(character):
         print()
         raise CharacterDeadException(character)
     else:
-      print(
-          'A block of pyroclastic debris flys towards you but you manage to '
-          'dodge out\nof the way.'
-      )
+      print('A block of pyroclastic debris flys towards you but you manage to '
+            'dodge out\nof the way.')
       c = ''
       while not c or c[0] not in 'CF':
         c = input('Do you go (C)ontinue of (F)lee? ').upper().strip()
@@ -399,8 +395,7 @@ def go_east(character):
   if EAST_AREA in character.completed_areas:
     print(
         'At the peak of the volcano, you see the evil tree that you previously'
-        ' defeated. You walk back to the snowy clearing.'
-    )
+        ' defeated. You walk back to the snowy clearing.')
     print()
     return
 
@@ -416,10 +411,8 @@ def go_east(character):
     character.inventory.add('Golden Ingot')
     strength = character.strength + random.randint(10, 50)
     character.strength += strength
-    print(
-        'You finish drinking the potion of strengh and gain {} stength. You '
-        'now have {} stength.'.
-        format(strength, character.strength))
+    print('You finish drinking the potion of strengh and gain {} stength. You '
+          'now have {} stength.'.format(strength, character.strength))
     print()
     print('You feel like a titan!')
     print()
@@ -437,12 +430,11 @@ def go_south(character):
   print(SOUTH_TEXT)
   for i in range(1, 6):
     zombie = Monster('Zombie Pigman #{}'.format(i),
-                     random.randint(i * 5, i*10),
-                     random.randint(25, 75),
-                     'stabs you with its wicked sword',
-                     'swings its sword at you', i, i*5)
+                     random.randint(i * 5, i * 10),
+                     random.randint(25, 75), 'stabs you with its wicked sword',
+                     'swings its sword at you', i, i * 5)
     if not proceed_after_fight(character, zombie):
-      print("You cowardly run back to the snowy plains.")
+      print('You cowardly run back to the snowy plains.')
       print()
       return
 
@@ -468,8 +460,7 @@ def go_west(character):
     if not proceed_after_fight(character, giant):
       print(
           "You cowardly run back to the snowy plains. You hope the giant won't"
-          " remember you in the future."
-      )
+          ' remember you in the future.')
       print()
       return
   else:
@@ -491,8 +482,7 @@ def go_down(character):
       character.hitpoints -= 5
       print(
           'The cave is dark and you stubble around until you bump you head on '
-          'the ceiling.'
-      )
+          'the ceiling.')
       print('You take {} damage. You have {} hitpoints remaining.'.format(
           5, character.hitpoints))
       if character.hitpoints <= 0:
@@ -503,8 +493,7 @@ def go_down(character):
       if c and c[0] == 'F':
         print(
             'You cowardly run back to the snowy plains after a little bump on '
-            'the head.'
-        )
+            'the head.')
         print()
         return
 
@@ -532,10 +521,8 @@ def go_down(character):
                         'smashes you with his war hammer',
                         'swings his war hammer at you', 5, 50)
       if not proceed_after_fight(character, guard):
-        print(
-            "You cowardly run back to the snowy plains. What kind of "
-            "adventurer can't get past a few guards?"
-        )
+        print('You cowardly run back to the snowy plains. What kind of '
+              "adventurer can't get past a few guards?")
         print()
         return
 
@@ -546,8 +533,7 @@ def go_down(character):
   if not proceed_after_fight(character, evil_king):
     print(
         'You cowardly run back to the snowy plains. Did the little king scare '
-        'you off?'
-    )
+        'you off?')
     print()
     return
   print(ENDING.format(name=character.name))
@@ -559,9 +545,9 @@ def select_path(character):
     print(DIRECTION_CHOICE)
     character.hitpoints = character.max_hitpoints
     c = ''
-    while not c or c[0] not in 'NESWD':
-      c = input('Do you go (N)orth (E)ast (S)outh (W)est or (D)own? ').upper(
-      ).strip()
+    while not c or c[0] not in 'NESWDP':
+      c = input('Do you go (N)orth (E)ast (S)outh (W)est or (D)own '
+                'P)rint Character? ').upper().strip()
     if c[0] == 'N':
       go_north(character)
     elif c[0] == 'E':
@@ -572,6 +558,9 @@ def select_path(character):
       go_west(character)
     elif c[0] == 'D':
       go_down(character)
+    elif c[0] == 'P':
+      print(character)
+      print()
 
 
 def main():
