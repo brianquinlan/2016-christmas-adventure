@@ -88,6 +88,37 @@ feel a bit stronger.
 
 """
 
+SOUTH_TEXT = """You enter the dark forest.
+
+Your sense of foreboding lessens briefly when you see five pigs playing with
+other and eating truffles.
+
+Suddenly lightly flashes from the sky and hits the ground near the pigs. The
+change before your eyes into horrible Zombie Pigmen.
+
+The moan their hatred of life in general - and you in particular and move
+towards you to attack.
+
+Fortunately the forest restricts your movement so that they can only attack you
+one at a time.
+
+"""
+
+SOUTH_ALREADY_DONE = """You wonder around the forest for a while but don't
+find anything interesting.
+
+You return to the snowy clearing.
+"""
+
+SOUTH_END = """You catch your breath amongst the remains of the Zombie Pigmen.
+
+Suddenly, in the corner of your eye, you see a potion laying next to one of
+the zombified pigs.
+
+You read the label and it says "Potion of Invisibility". You hide it in your
+pack and return to the clearing.
+"""
+
 WEST_TEXT = """You walk into the dank swamp hoping not to vomit from the terrible smells.
 
 In the distance you see a huge giant - maybe the smell of decay is coming from
@@ -382,6 +413,7 @@ def go_east(character):
                       'swings its huge branches towards you', 5, 15)
   if proceed_after_fight(character, evil_tree):
     print(EAST_TREE_WIN)
+    character.inventory.add('Golden Ingot')
     strength = character.strength + random.randint(10, 50)
     character.strength += strength
     print(
@@ -398,8 +430,23 @@ def go_east(character):
 
 def go_south(character):
   """Forest."""
-  # TODO(bquinlan): Add some plot here.
-  print('You get the invisibility potion')
+  if 'Invisibility Potion' in character.inventory:
+    print(SOUTH_ALREADY_DONE)
+    return
+
+  print(SOUTH_TEXT)
+  for i in range(1, 6):
+    zombie = Monster('Zombie Pigman #{}'.format(i),
+                     random.randint(i * 5, i*10),
+                     random.randint(25, 75),
+                     'stabs you with its wicked sword',
+                     'swings its sword at you', i, i*5)
+    if not proceed_after_fight(character, zombie):
+      print("You cowardly run back to the snowy plains.")
+      print()
+      return
+
+  print(SOUTH_END)
   character.inventory.add('Invisibility Potion')
 
 
