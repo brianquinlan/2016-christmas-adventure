@@ -179,7 +179,7 @@ class Character:
 
 Dexterity: {}
 Strength: {}
-Hitpoints: {} (or {})
+Hitpoints: {} (of {})
 Armor: {}
 Weapon: {}
 Other Items: {}
