@@ -289,6 +289,7 @@ def proceed_after_random_fight(character):
 
 
 def go_north(character):
+  """Beautiful Meadow."""
   print(NORTH_TEXT)
   while proceed_after_random_fight(character):
     print()
@@ -296,6 +297,7 @@ def go_north(character):
 
 
 def go_east(character):
+  """Mount Doom."""
   print(EAST_TEXT)
   for i in range(0, 150, 25):
     if random.randint(0, i) > character.dexterity:
@@ -358,6 +360,7 @@ def go_east(character):
 
 
 def go_south(character):
+  """Forest."""
   # TODO(bquinlan): Add some plot here.
   print('You get the invisibility potion')
   character.inventory.add('Invisibility Potion')
