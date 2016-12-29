@@ -434,8 +434,6 @@ def go_south(character):
                      random.randint(25, 75), 'stabs you with its wicked sword',
                      'swings its sword at you', i, i * 5)
     if not proceed_after_fight(character, zombie):
-      print('You cowardly run back to the snowy plains.')
-      print()
       return
 
   print(SOUTH_END)
@@ -458,10 +456,6 @@ def go_west(character):
     giant = Monster('Friendly Giant', 500, 50, 'smashes you with a giant fist',
                     'tries to step on you', 15, 50)
     if not proceed_after_fight(character, giant):
-      print(
-          "You cowardly run back to the snowy plains. You hope the giant won't"
-          ' remember you in the future.')
-      print()
       return
   else:
     print(
@@ -521,9 +515,6 @@ def go_down(character):
                         'smashes you with his war hammer',
                         'swings his war hammer at you', 5, 50)
       if not proceed_after_fight(character, guard):
-        print('You cowardly run back to the snowy plains. What kind of '
-              "adventurer can't get past a few guards?")
-        print()
         return
 
   character.inventory.remove('Invisibility Potion')
@@ -531,10 +522,6 @@ def go_down(character):
   evil_king = Monster('Bad King', 100, 50, 'hits you with his enchanted staff',
                       'swings at you with his enchanted staff', 5, 10)
   if not proceed_after_fight(character, evil_king):
-    print(
-        'You cowardly run back to the snowy plains. Did the little king scare '
-        'you off?')
-    print()
     return
   print(ENDING.format(name=character.name))
   sys.exit(0)
