@@ -154,6 +154,14 @@ SOUTH_AREA = 'south'
 WEST_AREA = 'west'
 CAVE_AREA = 'cave'
 
+non_clearing_input = input
+def my_input(*args, **kwargs):
+  import subprocess
+  x = non_clearing_input(*args, **kwargs)
+  subprocess.call('clear', shell=True)
+  return x
+input = my_input
+
 
 class Character:
 
@@ -245,6 +253,8 @@ def generate_hit_roll():
 
 def proceed_after_fight(character, monster):
   while True:
+    print()
+
     hit = generate_hit_roll()
     if hit >= character.dexterity:
       damage = random.randint(monster.attack_min_damage,
