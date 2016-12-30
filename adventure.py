@@ -11,7 +11,7 @@ Many have entered this land but few have returned.
 
 Your quest is to slay the Bad King, who has stolen the Clock of Time. Without
 the Clock of Time it will be 2016 forever and there will never be another
-another Christmas or birthday again!
+another Christmas, birthday or holiday again!
 """
 
 ENDING = """
@@ -193,6 +193,7 @@ if sys.version_info[0] < 3:
   non_clearing_input = raw_input
 else:
   non_clearing_input = input
+
 
 def clear():
   subprocess.call('clear', shell=True)
@@ -426,8 +427,9 @@ def go_east(character):
     character.inventory.add('Golden Ingot')
     strength = character.strength + random.randint(10, 50)
     character.strength += strength
-    print('You finish drinking the potion of strength and gain {} strength. You '
-          'now have {} strength.'.format(strength, character.strength))
+    print(
+        'You finish drinking the potion of strength and gain {} strength. You '
+        'now have {} strength.'.format(strength, character.strength))
     print('')
     print('You feel like a titan!')
     print('')
