@@ -12,6 +12,7 @@ Many have entered this land but few have returned.
 Your quest is to slay the Bad King, who has stolen the Clock of Time. Without
 the Clock of Time it will be 2016 forever and there will never be another
 another Christmas, birthday or holiday again!
+
 """
 
 ENDING = """
@@ -23,6 +24,7 @@ Merry Christmas {name}!
 
 Love,
 Brian, Kevin, Sophie, Pavel and Alex.
+
 """
 
 DIRECTION_CHOICE = """This place seems very familiar to another but you can't
@@ -48,6 +50,7 @@ Wait...to your North lies a beautiful meadow with a path that winds away from
 the terrible danger.
 
 You take a few minutes to rest and then make your choice.
+
 """
 
 NORTH_TEXT = """You walk north on the idyllic path. You hear bird song, smell the sweet
@@ -95,17 +98,18 @@ feel a bit stronger.
 
 SOUTH_TEXT = """You enter the dark forest.
 
-Your sense of foreboding lessens briefly when you see five small pigs playing with
-each other and eating truffles.
+Your sense of foreboding lessens briefly when you see five small pigs playing
+with each other and eating truffles.
 
-Suddenly lightning flashes from the sky and hits the ground near the pigs. They
-change before your eyes into horrible Zombie Pigmen.
+Suddenly lightning flashes from the sky and hits the ground near the pigs. The
+sight is horrible but it gets even worse as they change before your eyes into
+horrible Zombie Pigmen.
 
 They moan their hatred of life in general (and you in particular) and move
 towards you to attack.
 
-Fortunately, the forest restricts their movement so that they can only attack you
-one at a time.
+Fortunately, the forest restricts their movements so that they can only attack
+you one at a time.
 
 """
 
@@ -113,6 +117,7 @@ SOUTH_ALREADY_DONE = """You wonder around the forest for a while but don't
 find anything interesting.
 
 You return to the snowy clearing.
+
 """
 
 SOUTH_END = """You catch your breath amongst the remains of the Zombie Pigmen.
@@ -122,6 +127,7 @@ the zombified pigs.
 
 You read the label and it says "Potion of Invisibility". You hide it in your
 pack and return to the clearing.
+
 """
 
 WEST_TEXT = """You walk into the dank swamp hoping not to vomit from the terrible smells.
@@ -129,14 +135,15 @@ WEST_TEXT = """You walk into the dank swamp hoping not to vomit from the terribl
 In the distance you see a huge giant - maybe the smell of decay is coming from
 its victims?
 
-As you get closer, you see the smiling, happy face of the giant and realize that
-it is a Friendly Giant.
+As you get closer, you see the Giant is smiling and realize that it is a
+Friendly Giant.
 
 You also see that, behind the giant, there is a Crafting Table and various
 magical components! If only you could make use of it for a while...
 
 The giant greats you with a wave and says: "Answer my riddle and the Crafting
 Table is yours to use. What gets wetter as it dries?".
+
 """
 
 WEST_COMPLETED = """You inspect the crafting table and realize that you can use it to
@@ -151,6 +158,7 @@ You walk back to the snowy clearing feeling that there is nothing that you
 cannot do with your new magical tools.
 
 Certainly you couldn't be crushed by flying rocks.
+
 """
 
 WEST_ALREADY_COMPLETED = """You wander around the swamp until the smell overwhelms you.
@@ -160,19 +168,20 @@ You return to the snowy clearing.
 
 DOWN_COMMON = """You descend into the dark cave.
 
-There is no light at all but the faint glow coming from your enchanted armor. You
-cautiously proceed, the cold air chilling you to the bone.
+There is no light at all except for the faint glow coming from your enchanted
+armor. You proceed cautiously, the air chilling you to the bone.
 
-Ahead, you see a massive rock chamber. As you approach, you see that it is so large
-that it contains a huge tower. Guarding the tower is a nearly infinite number
-of soldiers.
+Ahead, you see a massive rock chamber. As you approach, you see that it is so
+large that it could contain a huge tower. And it does! Guarding the tower is a
+nearly infinite number of soldiers.
+
 """
 
 DOWN_VISIBLE = DOWN_COMMON + """You carefully sneak towards the tower, trying to avoid
 the attention of the guards.
 """
 
-DOWN_INVISIBLE = DOWN_COMMON + """You drink your potion of invisibility and race towards
+DOWN_INVISIBLE = DOWN_COMMON + """You drink your Potion of Invisibility and race towards
 the tower. You make it inside just as it wares off!
 
 You climb the circular stairs until the top of the tower. At the top of the
