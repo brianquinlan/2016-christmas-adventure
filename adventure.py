@@ -2,6 +2,7 @@
 
 import itertools
 import random
+import subprocess
 import sys
 
 WELCOME_TEXT = """Welcome {name} to the land of Pavlisha.
@@ -189,10 +190,13 @@ if sys.version_info[0] < 3:
 else:
   non_clearing_input = input
 
-def my_input(*args, **kwargs):
-  import subprocess
-  x = non_clearing_input(*args, **kwargs)
+def clear():
   subprocess.call('clear', shell=True)
+
+
+def my_input(*args, **kwargs):
+  x = non_clearing_input(*args, **kwargs)
+  clear()
   return x
 
 
@@ -563,4 +567,5 @@ def main():
 
 
 if __name__ == '__main__':
+  clear()
   main()
