@@ -205,8 +205,9 @@ input = my_input
 
 class Character:
 
-  def __init__(self, name, dexterity, strength, max_hitpoints):
+  def __init__(self, name, race, dexterity, strength, max_hitpoints):
     self.name = name
+    self.race = race
     self.dexterity = dexterity
     self.strength = strength
     self.max_hitpoints = max_hitpoints
@@ -223,7 +224,7 @@ class Character:
       return int(random.randint(1, 10) * (self.strength + 50) / 100)
 
   def __str__(self):
-    return """{}
+    return """{} the {}
 
 Dexterity: {}
 Strength: {}
@@ -231,7 +232,7 @@ Hitpoints: {} (of {})
 Armor: {}
 Weapon: {}
 Other Items: {}
-""".format(self.name, self.dexterity, self.strength, self.hitpoints,
+""".format(self.name, self.race, self.dexterity, self.strength, self.hitpoints,
            self.max_hitpoints, self.armor, self.weapon,
            ', '.join(sorted(self.inventory)) or '<none>')
 
@@ -253,21 +254,24 @@ def select_character():
   while not r or r[0] not in 'EHO':
     r = input('Enter (E)lf, (H)uman or (O)rc: ').upper().strip()
   if r[0] == 'E':
+    race = 'Elf'
     dexterity = random.randint(75, 100)
     strength = random.randint(25, 50)
     hitpoints = random.randint(50, 100)
     name = input('What is your name, wise Elf? ')
   elif r[0] == 'H':
+    race = 'Human'
     dexterity = random.randint(25, 75)
     strength = random.randint(25, 75)
     hitpoints = random.randint(100, 150)
     name = input('What is your name, bold Human? ')
   else:
+    race = 'Orc'
     dexterity = random.randint(25, 50)
     strength = random.randint(75, 100)
     hitpoints = random.randint(150, 200)
     name = input('What is your name, strong Orc? ')
-  character = Character(name, dexterity, strength, hitpoints)
+  character = Character(name, race, dexterity, strength, hitpoints)
   print('')
   print(character)
   print('')
