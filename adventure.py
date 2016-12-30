@@ -9,11 +9,15 @@ WELCOME_TEXT = """Welcome {name} to the land of Pavlisha.
 
 Many have entered this land but few have returned.
 
-Your quest is to slay the Bad King, who has stolen the people's Christmas gifts.
+Your quest is to slay the Bad King, who has stolen the Clock of Time. Without
+the Clock of Time it will be 2016 forever and there will never be another
+another Christmas or birthday again!
 """
 
 ENDING = """
-You have defeated the Bad King and saved Christmas.
+You have defeated the Bad King and recovered the Clock of Time.
+
+You have saved all future Christmases.
 
 Merry Christmas {name}!
 
@@ -21,20 +25,20 @@ Love,
 Brian, Kevin, Sophie, Pavel and Alex.
 """
 
-DIRECTION_CHOICE = """This place seems very familiar to another but you can't but you can't
+DIRECTION_CHOICE = """This place seems very familiar to another but you can't
 put your finger on how...
 
 You are standing in a snow-covered plain. In every direction stretches untracked
-miles of trecherous wilderness. Your blood chills at the thought of entering any
+miles of treacherous wilderness. Your blood chills at the thought of entering any
 of these foreboding landscapes - but enter you must!
 
 To your East lies Mount Doom - a volcano covered in lava and burning embers.
-You can smell the sulfer even from here.
+You can smell the sulfur even from here.
 
 To your South lies a nameless forest. You can hear whispers calling you to
 enter. They are not kind voices.
 
-To your West lies Swamp Putrid. It's name is well deserved as you can smell the
+To your West lies Swamp Putrid. Its name is well deserved as you can smell the
 decaying remains of those who entered before you.
 
 To your feet lies a cave so dark that you can't see into it more than a
@@ -63,9 +67,9 @@ Or is it...
 
 EAST_TEXT = """You walk east towards the hellish fires of Mount Doom.
 
-The air reeks of sulfer and you can feel the heat of the lava as you approach.
+The air reeks of sulfur and you can feel the heat of the lava as you approach.
 
-Occassional pyroclastic blocks fly from the volcano.
+Occasional pyroclastic blocks fly from the volcano.
 
 """
 
@@ -84,23 +88,23 @@ EAST_TREE_WIN = """At the base of the tree you spot a golden ingot and a potion.
 
 You put the ingot in your pocket but you aren't sure what to do with the potion.
 
-Oh heck, you are an adventurer aren't you? You sip the potion and suddenly
+Oh heck, you are an adventurer, aren't you? You sip the potion and suddenly
 feel a bit stronger.
 
 """
 
 SOUTH_TEXT = """You enter the dark forest.
 
-Your sense of foreboding lessens briefly when you see five pigs playing with
-other and eating truffles.
+Your sense of foreboding lessens briefly when you see five small pigs playing with
+each other and eating truffles.
 
-Suddenly lightly flashes from the sky and hits the ground near the pigs. The
+Suddenly lightning flashes from the sky and hits the ground near the pigs. They
 change before your eyes into horrible Zombie Pigmen.
 
-The moan their hatred of life in general - and you in particular and move
+They moan their hatred of life in general (and you in particular) and move
 towards you to attack.
 
-Fortunately the forest restricts your movement so that they can only attack you
+Fortunately, the forest restricts their movement so that they can only attack you
 one at a time.
 
 """
@@ -146,22 +150,22 @@ with their new enchantment!
 You walk back to the snowy clearing feeling that there is nothing that you
 cannot do with your new magical tools.
 
-Certainly you wouldn't be crushed by flying rocks.
+Certainly you couldn't be crushed by flying rocks.
 """
 
-WEST_ALREADY_COMPLETED = """You wander around the swamp until the smell overwealms you.
+WEST_ALREADY_COMPLETED = """You wander around the swamp until the smell overwhelms you.
 
 You return to the snowy clearing.
 """
 
 DOWN_COMMON = """You descend into the dark cave.
 
-There is no light at all but the faint glow of your enchanted armor. You
+There is no light at all but the faint glow coming from your enchanted armor. You
 cautiously proceed, the cold air chilling you to the bone.
 
-Ahead, you see a massive clearing. As it opens up, you see that it is so large
+Ahead, you see a massive rock chamber. As you approach, you see that it is so large
 that it contains a huge tower. Guarding the tower is a nearly infinite number
-of soliders.
+of soldiers.
 """
 
 DOWN_VISIBLE = DOWN_COMMON + """You carefully sneak towards the tower, trying to avoid
@@ -380,7 +384,7 @@ def go_east(character):
   print(EAST_TEXT)
   for i in range(0, 150, 25):
     if random.randint(0, i) > character.dexterity:
-      print('A block of pyroclastic debris flys towards you. You attempt to '
+      print('A block of pyroclastic debris flies towards you. You attempt to '
             'dodge but are\ntoo slow.')
       print('')
       if 'Enchanted' in character.armor:
@@ -394,7 +398,7 @@ def go_east(character):
         print('')
         raise CharacterDeadException(character)
     else:
-      print('A block of pyroclastic debris flys towards you but you manage to '
+      print('A block of pyroclastic debris flies towards you but you manage to '
             'dodge out\nof the way.')
       c = ''
       while not c or c[0] not in 'CF':
@@ -422,8 +426,8 @@ def go_east(character):
     character.inventory.add('Golden Ingot')
     strength = character.strength + random.randint(10, 50)
     character.strength += strength
-    print('You finish drinking the potion of strengh and gain {} stength. You '
-          'now have {} stength.'.format(strength, character.strength))
+    print('You finish drinking the potion of strength and gain {} strength. You '
+          'now have {} strength.'.format(strength, character.strength))
     print('')
     print('You feel like a titan!')
     print('')
@@ -544,8 +548,8 @@ def select_path(character):
     character.hitpoints = character.max_hitpoints
     c = ''
     while not c or c[0] not in 'NESWDP':
-      c = input('Do you go (N)orth (E)ast (S)outh (W)est or (D)own '
-                '(P)rint Character? ').upper().strip()
+      c = input('Do you go (N)orth (E)ast (S)outh (W)est (D)own '
+                'or (P)rint Character Information? ').upper().strip()
     if c[0] == 'N':
       go_north(character)
     elif c[0] == 'E':
