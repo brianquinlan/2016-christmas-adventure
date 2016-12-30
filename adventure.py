@@ -184,8 +184,10 @@ SOUTH_AREA = 'south'
 WEST_AREA = 'west'
 CAVE_AREA = 'cave'
 
-non_clearing_input = input
-
+if sys.version_info[0] < 3:
+  non_clearing_input = raw_input
+else:
+  non_clearing_input = input
 
 def my_input(*args, **kwargs):
   import subprocess
@@ -238,11 +240,11 @@ class CharacterDeadException(BaseException):
 
 def select_character():
   print('What race do you want to be?')
-  print()
+  print('')
   print('Elf - Fast but not very strong')
   print('Human - Jack of all trades, master of none')
   print('Orc - Strong but slow')
-  print()
+  print('')
   r = ''
   while not r or r[0] not in 'EHO':
     r = input('Enter (E)lf, (H)uman or (O)rc: ').upper().strip()
@@ -262,9 +264,9 @@ def select_character():
     hitpoints = random.randint(150, 200)
     name = input('What is your name, strong Orc? ')
   character = Character(name, dexterity, strength, hitpoints)
-  print()
+  print('')
   print(character)
-  print()
+  print('')
   return character
 
 
@@ -287,7 +289,7 @@ def generate_hit_roll():
 
 def proceed_after_fight(character, monster):
   while True:
-    print()
+    print('')
 
     hit = generate_hit_roll()
     if hit >= character.dexterity:
@@ -308,7 +310,7 @@ def proceed_after_fight(character, monster):
       c = input('What do you want to do? (A)ttack or (F)lee? ').strip().upper()
     if c[0] == 'F':
       print('You cowardly run back to the snowy plains.')
-      print()
+      print('')
       return False
 
     hit = generate_hit_roll()
@@ -361,7 +363,7 @@ def go_north(character):
   """Beautiful Meadow."""
   print(NORTH_TEXT)
   while proceed_after_random_fight(character):
-    print()
+    print('')
     print(NORTH_CONTINUE_TEXT)
 
 
@@ -372,16 +374,16 @@ def go_east(character):
     if random.randint(0, i) > character.dexterity:
       print('A block of pyroclastic debris flys towards you. You attempt to '
             'dodge but are\ntoo slow.')
-      print()
+      print('')
       if 'Enchanted' in character.armor:
         print('The debris hits your {} and bounces off harmlessly.'.format(
             character.armor))
-        print()
+        print('')
         break
       else:
         print(
             'It crushes you into a smoldering pile of bones and burned flesh.')
-        print()
+        print('')
         raise CharacterDeadException(character)
     else:
       print('A block of pyroclastic debris flys towards you but you manage to '
@@ -397,10 +399,10 @@ def go_east(character):
     print(
         'At the peak of the volcano, you see the evil tree that you previously'
         ' defeated. You walk back to the snowy clearing.')
-    print()
+    print('')
     return
 
-  print()
+  print('')
   print(EAST_TREE)
   evil_tree = Monster('Evil Tree',
                       random.randint(50, 100),
@@ -414,11 +416,11 @@ def go_east(character):
     character.strength += strength
     print('You finish drinking the potion of strengh and gain {} stength. You '
           'now have {} stength.'.format(strength, character.strength))
-    print()
+    print('')
     print('You feel like a titan!')
-    print()
+    print('')
     print('You walk back to the snowly clearing')
-    print()
+    print('')
     character.completed_areas.add(EAST_AREA)
 
 
@@ -446,14 +448,14 @@ def go_west(character):
 
   if WEST_AREA in character.completed_areas:
     print(WEST_ALREADY_COMPLETED)
-    print()
+    print('')
     return
   print(WEST_TEXT)
   answer = input('What gets wetter as it dries? ').strip()
   if 'towel' not in answer.lower() and 'sponge' not in answer.lower():
     print('"{0}"? "{0}"?! screams the giant. I will smash you into paste!'.
           format(answer))
-    print()
+    print('')
     giant = Monster('Friendly Giant', 500, 50, 'smashes you with a giant fist',
                     'tries to step on you', 15, 50)
     if not proceed_after_fight(character, giant):
@@ -462,7 +464,7 @@ def go_west(character):
     print(
         """Yes, towels (and sponges) get wetter as they dry, smiles the giant. He walks away humming."""
     )
-    print()
+    print('')
   print(WEST_COMPLETED)
   character.armor = 'Enchanted ' + character.armor
   character.weapon = 'Enchanted ' + character.weapon
@@ -489,7 +491,7 @@ def go_down(character):
         print(
             'You cowardly run back to the snowy plains after a little bump on '
             'the head.')
-        print()
+        print('')
         return
 
   if 'Invisibility Potion' not in character.inventory:
@@ -548,7 +550,7 @@ def select_path(character):
       go_down(character)
     elif c[0] == 'P':
       print(character)
-      print()
+      print('')
 
 
 def main():
